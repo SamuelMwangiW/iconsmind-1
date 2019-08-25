@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="css/iconsmind.css">
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: flex-start;
+        }
+
+        span[class*='icon-'] {
+            font-size: 0.9em;
+            margin: 1em;
+            display: inline-block;
+            width: 8em;
+            text-align: center;
+        }
+
+        span[class*='icon-']:before {
+            font-size: 8em;
+            text-align: center;
+            display: block;
+            margin-bottom: 0.1em;
+        }
+    </style>
+    <title>Iconsmind</title>
+    <meta name="viewport" content="width=device-width">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var root = document.createElement('div');
+            root.className = 'container';
+            var d, t;
+            var sSheetList = document.styleSheets;
+            for (var sSheet = 0; sSheet < sSheetList.length; sSheet++) {
+                var ruleList = document.styleSheets[sSheet].cssRules;
+                for (var rule = 0; rule < ruleList.length; rule++) {
+                    if (ruleList[rule].selectorText && (m = ruleList[rule].selectorText.match(
+                            /icon-(.+?)::before/))) {
+                        d = document.createElement('span');
+                        d.className = 'icon-' + m[1];
+                        t = document.createTextNode(m[1]);
+                        d.appendChild(t);
+                        root.appendChild(d);
+                    }
+                }
+                document.body.appendChild(root);
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>IconsMind</hi>
+</body>
+
+</html>
